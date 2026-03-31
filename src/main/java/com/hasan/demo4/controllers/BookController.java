@@ -2,6 +2,8 @@ package com.hasan.demo4.controllers;
 
 import java.util.List;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -18,13 +20,12 @@ import com.hasan.demo4.services.BookService;
 
 import jakarta.validation.Valid;
 
-
 //git için değişiklik testi 3
-
-
 @RestController
 @RequestMapping("/api/books")
 public class BookController {
+
+    private static final Logger log = LoggerFactory.getLogger(BookController.class);
 
     private final BookService bookService;
 
@@ -55,6 +56,8 @@ public class BookController {
 
     @GetMapping("/search/author")
     public List<Book> getByAuthor(@RequestParam String name) {
-        return bookService.getByAuthor(name); 
+
+        log.info("--->>>Searching for books by author: {}", name);
+        return bookService.getByAuthor(name);
     }
 }
