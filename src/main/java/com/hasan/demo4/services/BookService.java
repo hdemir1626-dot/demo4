@@ -12,6 +12,10 @@ import com.hasan.demo4.repositories.BookRepository;
 @Service
 public class BookService {
 
+    /* Kötü pratik , doğru olan @sevice annotasyonu kullanıp constructor ile injection yapmaktır
+     @Autowired
+    private  BookRepository repository;
+    */
     private final BookRepository repository;
 
     public BookService(BookRepository repository) {

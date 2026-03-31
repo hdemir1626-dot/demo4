@@ -35,22 +35,26 @@ public class BookController {
 
     @GetMapping
     public List<Book> getAll() {
+        log.info("-->book getAll() invoked");
         return bookService.getAll();
     }
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public Book create(@Valid @RequestBody Book book) {
+        log.info("-->book created: {}", book.getId());
         return bookService.create(book);
     }
 
     @GetMapping("/{id}")
     public Book getById(@PathVariable Long id) {
+        log.info("-->book getById: {}", id);
         return bookService.getById(id);
     }
 
     @DeleteMapping("/{id}")
     public void delete(@PathVariable Long id) {
+        log.info("-->book deleted: {}", id);
         bookService.delete(id);
     }
 
